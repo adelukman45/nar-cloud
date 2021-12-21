@@ -35,7 +35,8 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block"><img src="/img/N.png" alt=""></div>
+                            <div class="col-lg-6 d-none d-lg-block"><img src="/img/login.png" class="image-fluid"
+                                    width="100%" alt=""></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -69,10 +70,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
+                                        <a class="small" href="/">Back To N.A.R Clouds!</a>
                                     </div>
                                 </div>
                             </div>
