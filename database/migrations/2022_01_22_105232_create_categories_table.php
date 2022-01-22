@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCloudsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateCloudsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clouds', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('storage');
-            $table->string('price');
-            $table->string('category_id');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateCloudsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clouds');
+        Schema::dropIfExists('categories');
     }
 }

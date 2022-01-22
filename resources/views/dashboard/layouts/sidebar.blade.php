@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-text mx-1">N.A.R Clouds<sup>Admin</sup></div>
     </a>
 
@@ -28,6 +28,11 @@
         <a class="nav-link" href="/dashboard/clouds">
             <i class="fas fa-fw fa-cloud"></i>
             <span>Clouds</span></a>
+    </li>
+    <li class="nav-item {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard/categories">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Categories</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

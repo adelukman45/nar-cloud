@@ -2527,7 +2527,14 @@ https://templatemo.com/tm-570-chain-app-dev
                 @foreach ($clouds as $cloud)
                     <div class="col-lg-4 mx-auto">
                         <div class="pricing-item-pro">
-                            <span class="price">${{ $cloud->price }}</span>
+                            {{-- <span class="price">${{ $cloud->price }}</span> --}}
+                            <span class="price">
+                                @foreach ($categories as $category)
+                                    @if (old('category_id', $cloud->category_id) == $category->id)
+                                        {{ $category->name }}
+                                    @endif
+                                @endforeach
+                            </span>
                             <h4>{{ $cloud->name }}</h4>
                             <div class="icon">
                                 <img src="/img/1.png" alt="">
@@ -2535,6 +2542,7 @@ https://templatemo.com/tm-570-chain-app-dev
                             <ul>
                                 <li>{{ $cloud->storage }}</li>
                             </ul>
+                            <h2 class="mt-2">${{ $cloud->price }}</h2>
                             <div class="border-button">
                                 <a
                                     href="https://api.whatsapp.com/send?phone=6285294024911&text=Hallo%20Kak!%20Saya%20Ingin%20Paket%20{{ $cloud->name }}%20Di%20N.A.R%20Clouds!"><i

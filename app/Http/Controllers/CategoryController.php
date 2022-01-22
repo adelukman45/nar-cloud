@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\Cloud;
 use Alert;
 
-class CloudController extends Controller
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class CloudController extends Controller
      */
     public function index()
     {
-        return view('dashboard.clouds.index', [
-            'clouds' => Cloud::all()
-        ]);
+        return view('dashboard.category.index', ['categories' => Category::all()]);
     }
 
     /**
@@ -28,9 +26,7 @@ class CloudController extends Controller
      */
     public function create()
     {
-        return view('dashboard.clouds.create', [
-            'categories' => Category::all()
-        ]);
+        return view('dashboard.category.create');
     }
 
     /**
@@ -43,15 +39,13 @@ class CloudController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'storage' => 'required|max:255',
-            'price' => 'required|max:255',
-            'category_id' => 'required',
         ]);
 
-        Cloud::create($validatedData);
-        Alert::success('Congrats', 'New course has been added!');
+        Category::create($validatedData);
+        Alert::success('Congrats', 'New category has been added!');
 
-        return redirect('dashboard/clouds');
+
+        return redirect('dashboard/categories');
     }
 
     /**
@@ -60,12 +54,9 @@ class CloudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cloud $cloud)
+    public function show($id)
     {
-        return view('dashboard.clouds.show', [
-            'cloud' => $cloud,
-            'categories' => Category::all(),
-        ]);
+        //
     }
 
     /**
@@ -74,11 +65,10 @@ class CloudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cloud $cloud)
+    public function edit(Category $category)
     {
-        return view('dashboard.clouds.edit', [
-            'cloud' => $cloud,
-            'categories' => Category::all(),
+        return view('dashboard.category.edit', [
+            'category' => $category,
         ]);
     }
 
@@ -89,19 +79,16 @@ class CloudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cloud $cloud)
+    public function update(Request $request, Category $category)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'storage' => 'required|max:255',
-            'price' => 'required|max:255',
-            'category_id' => 'required',
         ]);
 
-        Cloud::where('id', $cloud->id)->update($validatedData);
-        Alert::success('Congrats', 'New course has been edited!');
+        Category::where('id', $category->id)->update($validatedData);
+        Alert::success('Congrats', 'The category has been edited!');
 
-        return redirect('dashboard/clouds');
+        return redirect('dashboard/categories');
     }
 
     /**
@@ -110,11 +97,11 @@ class CloudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cloud $cloud)
+    public function destroy(Category $category)
     {
-        Cloud::destroy($cloud->id);
-        Alert::success('Congrats', 'New course has been deleted!');
+        Category::destroy($category->id);
+        Alert::success('Congrats', 'The category has been deleted!');
 
-        return redirect('dashboard/clouds');
+        return redirect('dashboard/categories');
     }
 }

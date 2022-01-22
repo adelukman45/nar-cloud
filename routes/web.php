@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CloudController;
+use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 use App\Models\Cloud;
 
 /*
@@ -16,7 +18,10 @@ use App\Models\Cloud;
 */
 
 Route::get('/', function () {
-    return view('user',['clouds'=>Cloud::all()]);
+    return view('user', [
+        'clouds' => Cloud::all(),
+        'categories' => Category::all(),
+    ]);
 });
 
 Route::get('/dashboard', function () {
@@ -24,4 +29,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('dashboard/clouds', CloudController::class)->middleware('auth');
+Route::resource('dashboard/categories', CategoryController::class)->middleware('auth');
 require __DIR__ . '/auth.php';
